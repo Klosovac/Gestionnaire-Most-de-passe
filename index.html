@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestionnaire de mots de passe simple</title>
+  <!-- Font Awesome pour icônes -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fa-solid fa-lock"></i> Gestionnaire de mots de passe</h1>
+
+    <section id="explanation">
+      <p>
+        Ce gestionnaire vous permet de générer des mots de passe sécurisés selon vos critères,
+        puis de les enregistrer facilement avec le site associé.
+        Utilisez la section "Générateur" pour créer un mot de passe, puis ajoutez-le en bas.
+      </p>
+    </section>
+
+    <section id="generator" aria-label="Générateur de mot de passe">
+      <h2><i class="fa-solid fa-key"></i> Générateur de mot de passe</h2>
+      <div class="form-group">
+        <label for="length">Longueur :</label>
+        <input
+          type="number"
+          id="length"
+          min="6"
+          max="64"
+          value="16"
+          aria-describedby="lengthHelp"
+        />
+        <small id="lengthHelp">Choisissez la longueur entre 6 et 64 caractères</small>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="includeUppercase" checked /> Majuscules <i class="fa-solid fa-arrow-up-wide-short"></i></label>
+        <label><input type="checkbox" id="includeNumbers" checked /> Chiffres <i class="fa-solid fa-123"></i></label>
+        <label><input type="checkbox" id="includeSymbols" checked /> Symboles <i class="fa-solid fa-asterisk"></i></label>
+      </div>
+      <button id="generateBtn" aria-label="Générer mot de passe">
+        <i class="fa-solid fa-shuffle"></i> Générer
+      </button>
+      <div class="generated-password">
+        <input
+          type="text"
+          id="generatedPwd"
+          readonly
+          placeholder="Mot de passe généré"
+          aria-live="polite"
+        />
+        <button id="copyBtn" aria-label="Copier le mot de passe">
+          <i class="fa-regular fa-copy"></i>
+        </button>
+      </div>
+    </section>
+
+    <section id="addPassword" aria-label="Ajouter mot de passe">
+      <h2><i class="fa-solid fa-plus"></i> Ajouter un mot de passe</h2>
+      <form id="addForm">
+        <div class="form-group">
+          <label for="site">Nom du site :</label>
+          <input
+            type="text"
+            id="site"
+            placeholder="ex: facebook.com"
+            required
+            aria-required="true"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe :</label>
+          <input
+            type="text"
+            id="password"
+            placeholder="Saisissez ou générez un mot de passe"
+            required
+            aria-required="true"
+          />
+        </div>
+        <button type="submit" aria-label="Ajouter mot de passe">
+          <i class="fa-solid fa-floppy-disk"></i> Enregistrer
+        </button>
+      </form>
+    </section>
+
+    <section id="storedPasswords" aria-label="Liste des mots de passe enregistrés">
+      <h2><i class="fa-solid fa-list"></i> Mots de passe enregistrés</h2>
+      <ul id="listPasswords" aria-live="polite"></ul>
+    </section>
+  </div>
+
+  <script src="assets/js/scripts.js"></script>
+</body>
+</html>
